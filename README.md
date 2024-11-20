@@ -1,25 +1,143 @@
-# Dynamic Form Generator with Dark Mode Toggle
+# Dynamic Form Generator
 
-This project is a dynamic form generator that creates a form in real-time based on a provided JSON schema. It includes features like form validation, a dark mode toggle, and responsive design for a seamless user experience.
+## Table of Contents
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Technical Stack](#technical-stack)
+- [Setup Instructions](#setup-instructions)
+- [How It Works](#how-it-works)
+- [Example JSON Schema](#example-json-schema)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Bonus Features](#bonus-features)
+- [Screenshots](#screenshots)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Project Overview
+The Dynamic Form Generator is a React-based application designed to dynamically create forms from a JSON schema. The app provides a split-screen interface where users can define form schemas in a JSON editor on the left, and see a real-time, styled preview of the form on the right. It supports field validations, error messages, and dynamic styling (including dark mode).
 
 ## Features
 
-- **Dynamic Form Generation**: The form is dynamically generated based on a given JSON schema.
-- **Real-time Validation**: Fields are validated in real-time as the form is filled out.
-- **Dark Mode Toggle**: A button to toggle between light and dark themes.
-- **Responsive Design**: The form is responsive and looks great on both desktop and mobile devices.
-- **Error Handling**: Validation errors are shown for required fields and invalid inputs.
+### Main Interface
+- **Split-screen Layout**:
+  - **Left Panel**: A JSON editor with:
+    - Syntax highlighting
+    - Real-time validation
+    - Error messages for invalid JSON
+  - **Right Panel**: A dynamic form generator that:
+    - Updates in real time as JSON is edited
+    - Shows responsive form layout
+    - Displays proper error states and validation
 
-## Tech Stack
+### Form Features
+- **Dynamic Field Types**:
+  - Supports text, email, radio buttons, dropdowns, text areas, etc.
+  - Handles required fields and custom validation patterns
+- **Real-time Validation**:
+  - Displays validation errors for required and pattern-based fields
+- **Dark Mode**:
+  - Easily toggle between light and dark themes
+- **Submission**:
+  - Simulated submission with a loading state and success message
+  - Submitted data is logged to the console
+- **Mobile Responsiveness**:
+  - On smaller screens, the editor and preview stack vertically.
 
-- **HTML**: For structure and form layout.
-- **CSS**: For styling the form and implementing the dark mode toggle.
-- **JavaScript**: For handling the form's dynamic behavior and theme toggle.
-- **Optional**: You can extend this with frameworks like React or Vue.js for more complex requirements.
+### Testing
+- Tested with Playwright (end-to-end) and Jest (unit tests).
 
-## Installation
+## Technical Stack
+- **Frontend Framework**: React 18+ with TypeScript
+- **Styling**: Tailwind CSS
+- **Form Handling**: React Hook Form
+- **Validation**: Zod with @hookform/resolvers
+- **Testing Tools**:
+  - Playwright for end-to-end tests
+  - Jest for unit tests
 
-### 1. Clone the repository
+## Setup Instructions
 
-```bash
-git clone https://github.com/your-username/dynamic-form-generator.git
+### Prerequisites
+- Node.js (v16 or above)
+- npm or yarn
+
+### Steps
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/dynamic-form-generator.git
+    cd dynamic-form-generator
+    ```
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+3. Start the development server:
+    ```bash
+    npm start
+    ```
+    The app will run at [http://localhost:3000](http://localhost:5173).
+
+4. Run tests:
+    ```bash
+    npm test
+    ```
+
+## How It Works
+
+### JSON Schema Structure
+The JSON schema defines the form's structure, including fields, validation rules, and styles.
+
+#### Key Properties:
+- `formTitle`: Title of the form
+- `formDescription`: Optional description of the form
+- `fields`: Array of form field objects
+  - **Field Types**: text, email, select, radio, textarea
+  - **Validation**: Required fields, patterns, etc.
+
+### Workflow
+1. Write a JSON schema in the left panel.
+2. See the form preview updated in real-time on the right panel.
+3. Fill out the form and submit it.
+4. Validate the form's behavior (error messages, loading state, etc.).
+
+## Example JSON Schema
+Here’s a sample schema for testing:
+```json
+{
+  "formTitle": "Project Requirements Survey",
+  "formDescription": "Please fill out this survey about your project needs",
+  "fields": [
+    {
+      "id": "name",
+      "type": "text",
+      "label": "Full Name",
+      "required": true,
+      "placeholder": "Enter your full name"
+    },
+    {
+      "id": "email",
+      "type": "email",
+      "label": "Email Address",
+      "required": true,
+      "placeholder": "you@example.com",
+      "validation": {
+        "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$",
+        "message": "Please enter a valid email address"
+      }
+    },
+    {
+      "id": "companySize",
+      "type": "select",
+      "label": "Company Size",
+      "required": true,
+      "options": [
+        { "value": "1-50", "label": "1-50 employees" },
+        { "value": "51-200", "label": "51-200 employees" },
+        { "value": "201-1000", "label": "201-1000 employees" },
+        { "value": "1000+", "label": "1000+ employees" }
+      ]
+    }
+  ]
+}
