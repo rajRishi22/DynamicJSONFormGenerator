@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import "./JSONEditor.css";
 
 interface JSONEditorProps {
   onSchemaChange: (schema: string) => void;
@@ -6,7 +7,7 @@ interface JSONEditorProps {
 }
 
 const JSONEditor: React.FC<JSONEditorProps> = ({ onSchemaChange, error }) => {
-  const [input, setInput] = useState<string>('{}');
+  const [input, setInput] = useState<string>("{}");
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInput(e.target.value);
@@ -14,13 +15,14 @@ const JSONEditor: React.FC<JSONEditorProps> = ({ onSchemaChange, error }) => {
   };
 
   return (
-    <div>
+    <div className="editor-container">
       <textarea
-        className="w-full h-80 p-4 border rounded-lg bg-gray-50"
+        className={`editor-textarea ${error ? "error-border" : ""}`}
         value={input}
         onChange={handleChange}
+        placeholder="Enter JSON schema here..."
       />
-      {error && <p className="text-red-500">{error}</p>}
+      {error && <p className="error-message">{error}</p>}
     </div>
   );
 };

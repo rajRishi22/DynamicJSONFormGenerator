@@ -1,0 +1,96 @@
+/* Base styles for the form container */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #f9f9f9;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  /* Dark mode styles */
+  .form-container.dark {
+    background-color: #1a1a1a;
+    color: #f9f9f9;
+  }
+  
+  /* Dark mode toggle button */
+  .toggle-dark-mode {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .toggle-dark-mode:hover {
+    background: #0056b3;
+  }
+  
+  /* Form styles */
+  .form {
+    width: 90%;
+    max-width: 500px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+  }
+  
+  .form-container.dark .form {
+    background-color: #333;
+  }
+  
+  /* Form title */
+  .form-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* Form group styles */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+  }
+  
+  .form-input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  /* Error messages */
+  .error-message {
+    color: #e63946;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  
+  /* Submit button styles */
+  .submit-button {
+    width: 100%;
+    padding: 12px
+  }  

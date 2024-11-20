@@ -18,7 +18,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row bg-gray-100">
+    <div className="min-h-screen flex flex-col lg:flex-row bg-orange-100">
       <div className="lg:w-1/2 p-4">
         <JSONEditor onSchemaChange={handleSchemaChange} error={error} />
       </div>
