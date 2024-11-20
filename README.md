@@ -17,6 +17,11 @@
 ## Project Overview
 The Dynamic Form Generator is a React-based application designed to dynamically create forms from a JSON schema. The app provides a split-screen interface where users can define form schemas in a JSON editor on the left, and see a real-time, styled preview of the form on the right. It supports field validations, error messages, and dynamic styling (including dark mode).
 
+##Photos
+![image](https://github.com/user-attachments/assets/ead1cec7-da4c-4311-a5ed-38dd3c0c02d3)
+![image](https://github.com/user-attachments/assets/1b6e4610-ccf2-4a61-a0e7-d25970a18d9d)
+
+
 ## Features
 
 ### Main Interface
