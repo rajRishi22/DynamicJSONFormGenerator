@@ -1,50 +1,25 @@
-# React + TypeScript + Vite
+# Dynamic Form Generator with Dark Mode Toggle
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a dynamic form generator that creates a form in real-time based on a provided JSON schema. It includes features like form validation, a dark mode toggle, and responsive design for a seamless user experience.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Dynamic Form Generation**: The form is dynamically generated based on a given JSON schema.
+- **Real-time Validation**: Fields are validated in real-time as the form is filled out.
+- **Dark Mode Toggle**: A button to toggle between light and dark themes.
+- **Responsive Design**: The form is responsive and looks great on both desktop and mobile devices.
+- **Error Handling**: Validation errors are shown for required fields and invalid inputs.
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **HTML**: For structure and form layout.
+- **CSS**: For styling the form and implementing the dark mode toggle.
+- **JavaScript**: For handling the form's dynamic behavior and theme toggle.
+- **Optional**: You can extend this with frameworks like React or Vue.js for more complex requirements.
 
-- Configure the top-level `parserOptions` property like this:
+## Installation
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### 1. Clone the repository
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+```bash
+git clone https://github.com/your-username/dynamic-form-generator.git
