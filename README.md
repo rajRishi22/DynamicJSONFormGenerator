@@ -1,50 +1,143 @@
-# React + TypeScript + Vite
+# Dynamic Form Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Table of Contents
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Technical Stack](#technical-stack)
+- [Setup Instructions](#setup-instructions)
+- [How It Works](#how-it-works)
+- [Example JSON Schema](#example-json-schema)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Bonus Features](#bonus-features)
+- [Screenshots](#screenshots)
+- [Contributing](#contributing)
+- [License](#license)
 
-Currently, two official plugins are available:
+## Project Overview
+The Dynamic Form Generator is a React-based application designed to dynamically create forms from a JSON schema. The app provides a split-screen interface where users can define form schemas in a JSON editor on the left, and see a real-time, styled preview of the form on the right. It supports field validations, error messages, and dynamic styling (including dark mode).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+### Main Interface
+- **Split-screen Layout**:
+  - **Left Panel**: A JSON editor with:
+    - Syntax highlighting
+    - Real-time validation
+    - Error messages for invalid JSON
+  - **Right Panel**: A dynamic form generator that:
+    - Updates in real time as JSON is edited
+    - Shows responsive form layout
+    - Displays proper error states and validation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Form Features
+- **Dynamic Field Types**:
+  - Supports text, email, radio buttons, dropdowns, text areas, etc.
+  - Handles required fields and custom validation patterns
+- **Real-time Validation**:
+  - Displays validation errors for required and pattern-based fields
+- **Dark Mode**:
+  - Easily toggle between light and dark themes
+- **Submission**:
+  - Simulated submission with a loading state and success message
+  - Submitted data is logged to the console
+- **Mobile Responsiveness**:
+  - On smaller screens, the editor and preview stack vertically.
 
-- Configure the top-level `parserOptions` property like this:
+### Testing
+- Tested with Playwright (end-to-end) and Jest (unit tests).
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
+## Technical Stack
+- **Frontend Framework**: React 18+ with TypeScript
+- **Styling**: Tailwind CSS
+- **Form Handling**: React Hook Form
+- **Validation**: Zod with @hookform/resolvers
+- **Testing Tools**:
+  - Playwright for end-to-end tests
+  - Jest for unit tests
+
+## Setup Instructions
+
+### Prerequisites
+- Node.js (v16 or above)
+- npm or yarn
+
+### Steps
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/dynamic-form-generator.git
+    cd dynamic-form-generator
+    ```
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+3. Start the development server:
+    ```bash
+    npm start
+    ```
+    The app will run at [http://localhost:3000](http://localhost:5173).
+
+4. Run tests:
+    ```bash
+    npm test
+    ```
+
+## How It Works
+
+### JSON Schema Structure
+The JSON schema defines the form's structure, including fields, validation rules, and styles.
+
+#### Key Properties:
+- `formTitle`: Title of the form
+- `formDescription`: Optional description of the form
+- `fields`: Array of form field objects
+  - **Field Types**: text, email, select, radio, textarea
+  - **Validation**: Required fields, patterns, etc.
+
+### Workflow
+1. Write a JSON schema in the left panel.
+2. See the form preview updated in real-time on the right panel.
+3. Fill out the form and submit it.
+4. Validate the form's behavior (error messages, loading state, etc.).
+
+## Example JSON Schema
+Here’s a sample schema for testing:
+```json
+{
+  "formTitle": "Project Requirements Survey",
+  "formDescription": "Please fill out this survey about your project needs",
+  "fields": [
+    {
+      "id": "name",
+      "type": "text",
+      "label": "Full Name",
+      "required": true,
+      "placeholder": "Enter your full name"
     },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+    {
+      "id": "email",
+      "type": "email",
+      "label": "Email Address",
+      "required": true,
+      "placeholder": "you@example.com",
+      "validation": {
+        "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$",
+        "message": "Please enter a valid email address"
+      }
+    },
+    {
+      "id": "companySize",
+      "type": "select",
+      "label": "Company Size",
+      "required": true,
+      "options": [
+        { "value": "1-50", "label": "1-50 employees" },
+        { "value": "51-200", "label": "51-200 employees" },
+        { "value": "201-1000", "label": "201-1000 employees" },
+        { "value": "1000+", "label": "1000+ employees" }
+      ]
+    }
+  ]
+}
