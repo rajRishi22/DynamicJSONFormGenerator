@@ -1,3 +1,31 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+\/* Global Styles */
+
+.app-container {
+  padding: 20px;
+  background-color: #fff;
+  color: #000;
+}
+
+.dark .app-container {
+  background-color: #121212;
+  color: #fff;
+}
+
+.toggle-dark-mode {
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.toggle-dark-mode:hover {
+  background-color: #0056b3;
+}
+
+.toggle-dark-mode:focus {
+  outline: none;
+}
+

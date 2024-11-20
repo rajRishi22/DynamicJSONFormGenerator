@@ -11,10 +11,16 @@
     border-radius: 8px;
     background-color: #f4f4f4;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Textarea styling */
-  .editor-textarea {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.dark .editor-container {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Textarea styling */
+.editor-textarea {
     width: 100%;
     min-height: 300px;
     padding: 15px;
@@ -26,34 +32,52 @@
     background-color: #fff;
     color: #333;
     transition: border-color 0.3s, background-color 0.3s, color 0.3s;
-  }
-  
-  .editor-textarea:focus {
+}
+
+.dark .editor-textarea {
+    background-color: #444;
+    color: #fff;
+    border: 1px solid #666;
+}
+
+.editor-textarea:focus {
     border-color: #007bff;
     outline: none;
-  }
-  
-  /* Error state for textarea */
-  .error-border {
+}
+
+.dark .editor-textarea:focus {
+    border-color: #66b2ff;
+}
+
+/* Error state for textarea */
+.error-border {
     border-color: #e63946;
     background-color: #fff6f6;
-  }
-  
-  /* Error message styling */
-  .error-message {
+}
+
+.dark .error-border {
+    border-color: #ff6f61;
+    background-color: #4a2a2a;
+}
+
+/* Error message styling */
+.error-message {
     margin-top: 10px;
     font-size: 12px;
     color: #e63946;
-  }
-  
-  /* Responsive design */
-  @media (max-width: 768px) {
+}
+
+.dark .error-message {
+    color: #ff6f61;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
     .editor-container {
-      padding: 15px;
+        padding: 15px;
     }
-  
+
     .editor-textarea {
-      font-size: 13px;
+        font-size: 13px;
     }
-  }
-  
+}
